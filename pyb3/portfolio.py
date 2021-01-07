@@ -9,7 +9,7 @@ def Serie(ativo, volumes=[], intraday=0, periodo=[2010, 2030], dataini=0, dias =
     ativo=[ativo]
     if dias:
         from datetime import datetime, timedelta
-        periodo = [int((date.today() - timedelta(days=dias)).strftime('%Y%m%d')), int(datetime.today().strftime('%Y%m%d'))]
+        periodo = [int((datetime.today() - timedelta(days=dias)).strftime('%Y%m%d')), int(datetime.today().strftime('%Y%m%d'))]
     return acoes.UolSeries().get(ativo, intraday, periodo, dataini)[0][0] if intraday else acoes.YahooSeries(ativo,periodo,dataini)[0][0]
 
 # trabalha com um conjunto de series de ativos
@@ -18,7 +18,7 @@ class Carteira:
         ativos = ativos if type(ativos)==list else [ativos]
         if dias:
             from datetime import datetime, timedelta
-            periodo = [int((date.today() - timedelta(days=dias)).strftime('%Y%m%d')), int(datetime.today().strftime('%Y%m%d'))]
+            periodo = [int((datetime.today() - timedelta(days=dias)).strftime('%Y%m%d')), int(datetime.today().strftime('%Y%m%d'))]
         periodo = periodo if type(periodo)==list else [periodo]
         volumes = volumes if type(volumes)==list else [volumes]
         series = acoes.UolSeries().get(ativos, intraday, periodo, dataini) if intraday else acoes.YahooSeries(ativos,periodo,dataini)
