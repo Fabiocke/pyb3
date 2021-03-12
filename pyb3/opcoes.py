@@ -14,7 +14,7 @@ class Opcoes:
     # Gera os vencimentos
     def __vencimentos(self, papel):
         url = f'https://opcoes.net.br/listaopcoes/completa?au=False&uinhc=0&idLista=ML&idAcao={papel}&listarVencimentos=true&cotacoes=true'
-        response = requests.get(url).json()
+        response = requests.get(url, verify=False).json()
         vctos = [[i['value'], i['text']] for i in response['data']['vencimentos']]
         return vctos
 
