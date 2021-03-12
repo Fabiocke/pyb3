@@ -1,2 +1,2 @@
-pyb3/Untitled.ipynb
-pyb3/.ipynb_checkpoints
+Untitled.ipynb
+.ipynb_checkpoints
